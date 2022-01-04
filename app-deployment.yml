@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: __APP_NAME__
+  labels:
+    app: web
+  namespace: __APP_NAME__
+spec:
+  selector:
+    matchLabels:
+      octopusexport: OctopusExport
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: web
+        octopusexport: OctopusExport
+    spec:
+      volumes:
+        - name: __APP_NAME__-pv
+          persistentVolumeClaim:
+            claimName: __APP_NAME__-pvc
+      containers:
+        - name: __APP_NAME__
+          image: '8clever/__APP_NAME__:master'
+          imagePullPolicy: Always
+          ports:
+            - name: web
+              containerPort: 80
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: __APP_NAME__-env
+          volumeMounts:
+            - name: __APP_NAME__-pv
+              mountPath: /app/cache
+              subPath: ''
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                        - web
+                topologyKey: kubernetes.io/hostname
