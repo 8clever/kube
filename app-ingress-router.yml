@@ -12,5 +12,9 @@ spec:
     services:
     - name: __APP_NAME__-svc
       port: 80
+    middlewares:
+    - name: security
   tls:
     certResolver: le
+    options:
+      name: tlsoptions
