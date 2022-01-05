@@ -2,7 +2,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: __APP_NAME__
-  namespace: dev
+  namespace: __APP_NAME__
 spec:
   entryPoints:
     - websecure
