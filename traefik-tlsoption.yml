@@ -2,6 +2,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: TLSOption
 metadata:
   name: tlsoptions
+  namespace: __APP_NAME__
 spec:
   minVersion: VersionTLS12
   cipherSuites:
