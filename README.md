@@ -1,3 +1,3 @@
 # kube
 
-More or less specific cofiguration of kubernetes with traefik
+More or less cofiguration of kubernetes app with traefik tls support
