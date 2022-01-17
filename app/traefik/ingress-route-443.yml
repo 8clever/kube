@@ -7,13 +7,13 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - kind: Rule
-    match: Host(`__YOUR_HOST__`)
-    services:
-    - name: __APP_NAME__-svc
-      port: 80
-    middlewares:
-    - name: security
+    - kind: Rule
+      match: Host(`__YOUR_HOST__`)
+      services:
+        - name: __APP_NAME__-svc
+          port: 80
+      middlewares:
+        - name: strong-tls
   tls:
     certResolver: le
     options:

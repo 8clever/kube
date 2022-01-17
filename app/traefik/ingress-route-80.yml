@@ -1,0 +1,13 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: __APP_NAME__
+  namespace: __APP_NAME__
+spec:
+  entryPoints:
+    - web
+  routes:
+    - kind: Rule
+      match: Host(`__YOUR_HOST__`)
+      middlewares:
+        - name: http-https-redirect

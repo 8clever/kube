@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: security
+  name: strong-tls
   namespace: __APP_NAME__
 spec:
   headers:
