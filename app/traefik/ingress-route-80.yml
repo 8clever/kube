@@ -11,3 +11,6 @@ spec:
       match: Host(`__YOUR_HOST__`)
       middlewares:
         - name: http-https-redirect
+      services:
+        - name: __APP_NAME__-svc
+          port: 80
