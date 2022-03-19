@@ -1,3 +1,6 @@
 # kube
 
-More or less cofiguration of kubernetes app with traefik tls support
+- k3s cluster
+- ssl/tls 
+- middlewares
+- ingress route
